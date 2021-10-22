@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>James D Pickering | Programs</title>
+    <link rel="shortcut icon" type="image/png" href="http://jamesdpickering.com/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="http://jamesdpickering.com/favicon.ico">
+    <link href="http://jamesdpickering.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
+    <link rel="stylesheet" href="http://jamesdpickering.com/theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="http://jamesdpickering.com/theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="jdpicks" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="http://jamesdpickering.com/">Home</a></li>
+                <li><a href="/pages/teaching.html">Teaching</a></li>
+                <li><a href="/pages/research.html">Research</a></li>
+                <li><a href="/pages/programs.html">Programs</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+                <li><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="http://jamesdpickering.com/">James D Pickering</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <div class="page">
+                <h1>Programs</h1>
+                <p>Here some programs I have made that may be useful for other researchers/students are kept. These are as error free as possible, but let me know if you find anything. Everything is written in Python.</p>
+<h4><b> SFGTools Software Package </b></h4>
+<p><a href="https://github.com/james-d-pickering/SFGTools" target="_blank"> SFGTools </a> is a Python package I wrote for procesing data from Sum-Frequency Generation (SFG) spectroscopy experiments. Mostly it was written in conjunction with a series of tutorial articles I wrote/am writing, and was a bit of a labour of love (my Python improved dramatically through doing this). There's a package that can be used in a normal Python script, and also a GUI for easy processing of lots of data by people less comfortable with Python. This is being actively updated (and various bugs fixed), so please contact me if there are additions that would be nice (using this framework to extend to other kinds of spectroscopy data would also be interesting). </p>
+<h4><b> SFG Upconversion Simulator </b></h4>
+<p><a href="../programs/SFG_upconversion_simulator.py" target="_blank"> The SFG upconversion simulatior </a> is designed to allow you to generate the spectral line that a user-given molecular resonance will produce in an sum-frequency generation (SFG) spectroscopy measurement, with a given IR and VIS (upconversion) pulse. Specifically, the aim is to allow the effect of the delay between IR and VIS, and the effect of the VIS pulse shape/width/length on the output spectrum to be seen. The program is pretty thoroughly commented and is quite straightforward to use, it will output an illustration of your input electric fields, and also the "ideal" spectral line (with perfect upconversion), together with the "actual" spectral line that your given upconverter will create. It does not account for realistic amplitudes and so cannot simulate an actual spectrum quantitatively, but illustrates the effects on spectral linewidth well. I would treat the results as semi-quantitative, as there are many factors aside from the VIS pulse that contribute to spectral linewidth (it doesn't, for example, account for if you've focussed into your spectrograph badly). I think it is most useful as a teaching/pedagogical tool for people new to the field to mess around with. </p>
+<h4><b> Knife-edge beam profiler fitting </b></h4>
+<p><a href="../programs/knife_edge_fit.py" target="_blank"> This program </a> allows you to calculate the size of a laser beam simply by measuring the beam power on a power meter, and then scanning a razor blade (or other sharp object) through the face of the beam. Recording the transmitted power as a function of the razor blade position can then be fitted to a function that allows the beam radius (1/e^2) to be calculated. <a href="../pdfs/knife_edge_profiler.pdf" target="_blank"> A PDF </a> explaining how I derived the equation to fit to is here, for reference. The program is pretty self-explanatory and simple, but assumes that you are measuring the stage position in millimetres. It was intended initially for measuring on unfocussed beams, but could also be used with a focussed beam provided that you don't burn the knife edge. Commented out in the program is some example data I took from one of the laser systems in my lab.</p>
+            </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="http://jamesdpickering.com/feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("G-1M07TKD861");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
