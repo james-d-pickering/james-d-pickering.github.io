@@ -4,11 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>James D Pickering | Programs</title>
-    <link rel="shortcut icon" type="image/png" href="../favicon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-    <link href="http://james-d-pickering.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
-    <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
-    <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css" />
+    <link rel="shortcut icon" type="image/png" href="http://localhost:8000/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="http://localhost:8000/favicon.ico">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pygments.css" type="text/css" />
     <meta name="generator" content="Pelican" />
     <meta name="description" content="" />
     <meta name="author" content="jdpicks" />
@@ -17,7 +16,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="../">Home</a></li>
+                <li><a href="http://localhost:8000/">Home</a></li>
                 <li><a href="/pages/teaching.html">Teaching</a></li>
                 <li><a href="/pages/research.html">Research</a></li>
                 <li><a href="/pages/programs.html">Programs</a></li>
@@ -26,7 +25,7 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="../">James D Pickering</a></h1>
+            <h1><a href="http://localhost:8000/">James D Pickering</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -34,6 +33,8 @@
             <div class="page">
                 <h1>Programs</h1>
                 <p>Here some programs I have made that may be useful for other researchers/students are kept. These are as error free as possible, but let me know if you find anything. Everything is written in Python.</p>
+<h4><b> PyOpticalTable: Drawing Optical Layouts In Matplotlib </b></h4>
+<p>Having spent many hours drawing optical layouts in matplotlib by drawing lines and boxes using plt.plot(), I decided I should write a library for making it easier. In retrospect, I don't foresee having to draw another optical layout for a while, but I hope that <a href="https://jamesdpickering.com/pyopticaltable/" target="_blank">PyOpticalTable </a> can be useful for someone else sometime. It's reasonably well documented on there, and there's a github link on the page linked above. Just download it and use the file as a python module. The nice thing about it is that it lets you resize the figure/table without ruining all the aspect ratios - and if you want to tweak the position of an optic 5 minutes before your thesis deadline, then it will automatically reroute the laser beam for you. It's not a ray tracing program though, just pretty figures..</p>
 <h4><b> SFGTools Software Package </b></h4>
 <p><a href="https://github.com/james-d-pickering/SFGTools" target="_blank"> SFGTools </a> is a Python package I wrote for procesing data from Sum-Frequency Generation (SFG) spectroscopy experiments. Mostly it was written in conjunction with a series of tutorial articles I wrote/am writing, and was a bit of a labour of love (my Python improved dramatically through doing this). There's a package that can be used in a normal Python script, and also a GUI for easy processing of lots of data by people less comfortable with Python. This is being actively updated (and various bugs fixed), so please contact me if there are additions that would be nice (using this framework to extend to other kinds of spectroscopy data would also be interesting). </p>
 <h4><b> SFG Upconversion Simulator </b></h4>
@@ -48,20 +49,9 @@
                 <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
                 &middot;
                 Powered by <a href="http://getpelican.com">Pelican</a>
-                &middot;
-                <a href="../feeds/all.atom.xml" rel="alternate">Atom Feed</a>
             </footer>
         </div>
         <div class="clear"></div>
     </div>
-    <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-    try {
-        var pageTracker = _gat._getTracker("G-1M07TKD861");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
 </body>
 </html>
