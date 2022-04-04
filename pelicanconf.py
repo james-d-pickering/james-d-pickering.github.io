@@ -1,6 +1,6 @@
 AUTHOR = 'jdpicks'
 SITENAME = 'James D Pickering'
-SITEURL = ''#'http://jamesdpickering.com'
+SITEURL = 'http://localhost:8000'
 
 PATH = 'content'
 #PAGE_PATHS = ['pages',]

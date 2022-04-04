@@ -47,3 +47,13 @@ I made this <a href="../pdfs/Photochem_supplement.pdf" target="_blank">beautiful
 #### Degeneracy in Molecular Term Symbols
 This <a href="../pdfs/Moleculartermsymboldegeneracy.pdf" target="_blank">whiteboard </a> was made after a lockdown online tutorial in which one of my excellent students at Merton college pointed out that I'd been teaching this incorrectly for a whole year. It aims to explain why the degeneracy of a molecular term is not the standard 2J+1 (as in atoms), but is actually 2S+1. It boils down to how the angular momentum vectors are projected, and in molecules you project to the molecule-fixed axis not the space-fixed axis. 
 
+#### Chemical Kinetics Revision Sheets
+I made a selection of these handwritten (and questionably legible) revision sheets covering basic topics in undergraduate chemical kinetics: <a href="../pdfs/approximations_in_kinetics.pdf" target="_blank">approximations in kinetics </a> (steady-state approximation and pre-equilibria); <a href="../pdfs/basic_kinetics.pdf" target="_blank">basic rates and stoichiometry </a>; <a href="../pdfs/collision_theory.pdf" target="_blank">simple collision theory </a>; <a href="../pdfs/lindemann_theory_1.pdf" target="_blank">Lindemann theory </a> (<a href="../pdfs/lindemann_theory_2.pdf" target="_blank">and a sequel </a>); some details on the maths behind <a href="../pdfs/maths_of_TST_1.pdf" target="_blank">transition state theory </a> (<a href="../pdfs/maths_of_TST_2.pdf" target="_blank">and a sequel</a>).   
+
+#### Slater Determinants
+A couple of students once came to me in a last minute exam panic about not understanding the point of a <a href="../pdfs/slater_determinants.pdf" target="_blank">Slater determinant </a>. I made this in a rush so it doesn't really explain why Slater determinants work, but does show that they do work for a simple system. Maybe useful if you are very new to the idea.  
+
+#### Population vs Sample Statistics
+Often it isn't clear to students why we have two formulae for standard deviation - the population and sample versions. <a href="../pdfs/population_vs_sample_detail.pdf" target="_blank">This note </a> explains it a bit further, using an example stolen from Michael Burt. The data that was used in the example is <a href="../pdfs/running_times.txt" target="_blank">here </a> (.txt file) if you want to check my arithmetic.
+
+
