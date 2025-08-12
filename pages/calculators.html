@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>James D Pickering | Calculators</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link href="http://jamesdpickering.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
+    <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="jdpicks" />
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1M07TKD861"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1M07TKD861');
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/pages/teaching.html">Teaching</a></li>
+                <li><a href="/pages/research.html">Research</a></li>
+                <li><a href="/pages/programs.html">Programs</a></li>
+                <li><a href="/pages/calculators.html">Calculators</a></li>
+                <li><a href="/pages/misc.html">Misc</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="../">James D Pickering</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <div class="page">
+                <h1>Calculators</h1>
+                <h4>Unit Conversions</h4>
+<p>There are a lot of nice online unit converters, but they all do different things. Here's an attempt at rationalising them so that everything useful<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is in one place. Put one quantity in and the others will all change accordingly. Mouseover text on the label of each textbox gives some additional information. </p>
+<p>You can type in scientific notation (i.e. 800nm would be writing <code>800E-9</code> in the wavelength box). I mostly left the quantities in their base units, because:</p>
+<ul>
+<li>It would get very messy with separate cells for MHz, GHz, THz, etc.</li>
+<li>We should all know the prefixes and be able to multiply and divide powers of 10.</li>
+</ul>
+<p>The SI prefixes are at the bottom of the page if you've forgotten.</p>
+<table>
+<form class="wrapper">
+
+<tr>
+<th colspan=4><strong>General</strong></th>
+</tr>
+<tr>
+<td title='Bog standard Joules.'> <label for="energyJ">Energy (J):</label> </td>
+<td> <input type="text" id="energyJ" name="energyJ" size=8> </td>
+<td title='Work done on an electron by an electric field of 1V.'> <label for='energyeV'>Energy (eV):</label> </td>
+<td> <input type="text" id='energyeV' name='energyeV' size=8> </td>
+<!-- <td> <label for=energykJ>kJ:</label></td>
+<td> <input type="text" id="energykJ" name="energykJ" size=8> </td> -->
+</tr>
+
+<tr>
+<td title='Standard in atomic units. Roughly twice the ionisation energy of the electron in a ground state hydrogen atom.'> <label for='energyH'>Energy (Hartree):</label> </td>
+<td> <input type="text" id='energyH' name='energyH' size=8> </td>
+<td title='Energy used when 1kW of power is consumed for an hour.'> <label for='energykWh'>Energy (kWh):</label> </td>
+<td> <input type="text" id='energykWh' name='energykWh' size=8> </td>
+</tr>
+
+
+
+<tr>
+<th colspan=4><strong>Optical</strong></th>
+</tr>
+
+<tr>
+<td title='Complete oscillations (cycles) per second.'> <label for="freq">Frequency (Hz):</label> </td>
+<td> <input type="text" id="freq" name="freq" size=8> </td>
+<td title='As frequency, but expressed in radians per second rather than complete cycles per second (2pi radians in a cycle, so factor of 2pi difference).'> <label for="angfreq">Angular Frequency (rad Hz):</label> </td>
+<td> <input type="text" id="angfreq" name="angfreq" size=8> </td>
+
+</tr>
+
+
+
+<tr>
+<td title='Time taken for one oscillation (one cycle).'> <label for="time">Time Period (s):</label> </td>
+<td> <input type="text" id="time" name="time" size=8> </td>
+<td title='Distance travelled in one oscillation (one cycle).'> <label for="wavelength">Wavelength (m):</label> </td>
+<td> <input type="text" id="wavelength" name="wavelength" size=8> </td>
+
+</tr>
+
+<tr>
+<td title='Complete oscillations (cycles) per metre.'> <label for="wavenumber">Wavenumber (m-1):</label> </td>
+<td> <input type="text" id="wavenumber" name="wavenumber" size=8> </td>
+<td title='As wavenumber, but expressed in radians per second rather than complete cycles per second (2pi radians in a cycle, so factor of 2pi difference).'> <label for="angwavenumber">Angular Wavenumber (m-1):</label> </td>
+<td> <input type="text" id="angwavenumber" name="angwavenumber" size=8> </td>
+</tr>
+
+
+
+<tr>
+<th colspan=4><strong>Chemical</strong></th>
+<tr>
+<td title='Energy of a mole of particles (i.e. Energy x Avogadro number), in kJ/mol (1kJ = 1000 J).'> <label for='energykJmol'>Energy (kJ/mol):</label> </td>
+<td> <input type='text' id='energykJmol' name='energykJmol' size=8> </td>
+<td title='Energy of a mole of particles (i.e. Energy x Avogadro number), in kcal/mol (1kcal = 4184 J).'> <label for='energykcalmol'>Energy (kcal/mol):</label> </td>
+<td> <input type='text' id='energykcalmol' name='energykcalmol' size=8> </td>
+</tr>
+
+<tr>
+<td title='Thermal Energy = kT, where k is the Boltzmann constant. So this is E/k.'> <label for='temperature'>Equivalent Temperature (K):</label> </td>
+<td> <input type="text" id='temperature' name='temperature' size=8> </td>
+<td title='Same as wavenumber (i.e. 1/wavelength, not angular wavenumber), but in inverse centimetres not metres for historical reasons.'> <label for="wavenumbercm">Spectroscopic Wavenumber (cm-1):</label> </td>
+<td> <input type="text" id="wavenumbercm" name="wavenumbercm" size=8> </td>
+</tr>
+
+
+
+
+<tr>
+<td title='At equilibrium, dG = -nFE. Assumes energy given is the Gibbs energy. Change number of electrons transferred below.'> <label for='cellpotential'>Cell Potential (V):</label> </td>
+<td> <input type='text' id='cellpotential' name='cellpotential' size=8> </td>
+<td title='Boltzmann Law. Change temperature and degeneracy ratio below (not equivalent temperature above).'> <label for='boltzmann'>Boltzmann Population Ratio:</label> </td>
+<td> <input type="text" id='boltzmann' name='boltzmann' size=8> </td>
+</tr>
+
+<tr>
+<td title='Thermodynamic equilibrium constant K, from dG = -RTln(K). Assumes energy given is the Gibbs energy.'> <label for='equilibrium'> Equilibrium Constant:</label> </td>
+<td> <input type='text' id='equilibrium' name='equilibrium' size=8> </td>
+<td title='Natural log of the thermodynamic equlibrium constant K. Assumes energy given is the Gibbs energy.'> <label for='lnequilibrium'>ln(Equilibrium Constant):</label> </td>
+<td> <input type='text' id='lnequilibrium' name='lnequilibrium' size=8 > </td>
+</tr>
+<tr>
+<td title='Rate constant from the Arrhenius equation, using given A factor and assuming energy given is activation energy. Units depend on units of A factor, so are not given.'> <label for='arrhenius'>Rate Constant:</label> </td>
+<td> <input type='text' id='arrhenius' name='arrhenius' size=8> </td>
+<td title='Half-life of a first-order kinetic process where the energy given is the activation energy.'> <label for='halflife'>Half Life (s):</label> </td>
+<td> <input type='text' id='halflife' name='halflife' size=8> </td>
+</tr>
+
+
+
+<tr>
+<th colspan=4><strong>Parameters for Chemical Calculations Above</strong></th>
+<tr>
+
+<td title='Temperature for above calculations, in Kelvin.'> <label for='boltzmannT'>Calculation Temperature (K):</label> </td>
+<td> <input type="text" id='boltzmannT' name='boltzmannT' size=8 value=298> </td>
+<td title='Boltzmann degeneracy ratio: upper/lower.'> <label for='boltzmanng'>Degeneracy Ratio:</label> </td>
+<td> <input type="text" id='boltzmanng' name='boltzmanng' size=8 value=1> </td>
+</tr>
+<tr>
+<td title='Arrhenius A factor, units determine units of rate constant above.'> <label for='Aconstant'>Arrhenius A factor:</label> </td>
+<td> <input type='text' id='Aconstant' name='Aconstant' size=8 value=1> </td>
+<td title='Number of electrons transferred to calculate cell potential.'> <label for='nelectrons'>Electrons Transferred:</label> </td>
+<td> <input type='text' id='nelectrons' name='nelectrons' size=8 value=1> </td>
+</tr>
+
+
+<tr>
+<th colspan=4><strong>Miscellaneous</strong></th>
+<tr>
+<td title='The energy needed to head one pound of water by one degree Fahrenheit, for whatever reason.'> <label for='btu'> British Thermal Units:</label> </td>
+<td> <input type='text' id='btu' name='btu' size=8> </td>
+<td title='How many grams of TNT would produce an explosion with the energy given.'> <label for='TNT'> Grams of TNT:</label> </td>
+<td> <input type='text' id='TNT' name='TNT' size=8> </td>
+</tr>
+
+
+
+<tr>
+<td title='Archaic spectroscopy energy units, basically half a Hartree (13.6eV).'> <label for='rydberg'> Rydbergs:</label> </td>
+<td> <input type='text' id='rydberg' name='rydberg' size=8> </td>
+<td title='Energy units in the cgs system. Equal to 100nJ.'> <label for='erg'> Ergs:</label> </td>
+<td> <input type='text' id='erg' name='erg' size=8> </td>
+</tr>
+
+
+<tr>
+<td title='Barrels of oil that, when burned, would release the energy given.'> <label for='booe'> Barrels of Oil Equivalent:</label> </td>
+<td> <input type='text' id='booe' name='booe' size=8> </td>
+<td title='4.184 Joules. Nutritionists use this and a value 1000 times bigger interchangably, what a faff.'> <label for='calorie'> Calories:</label> </td>
+<td> <input type='text' id='calorie' name='calorie' size=8> </td>
+</tr>
+
+
+</form>
+</table>
+<p><br></p>
+<h5>Metric Prefixes</h5>
+<p>If you're an undergraduate reading this, learn the table below by heart.</p>
+<table><thead>
+  <tr>
+    <th>atto (a)</th>
+    <th>femto (f)</th>
+    <th>pico (p)</th>
+    <th>nano (n)</th>
+    <th>micro (μ)</th>
+    <th>milli (m)</th>
+    <th>kilo (k)</th>
+    <th>mega (M)</th>
+    <th>giga (G)</th>
+    <th>tera (T)</th>
+    <th>peta (P)</th>
+    <th>exa (E)</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td style="text-align: center;">1E-18</td>
+    <td style="text-align: center;">1E-15</td>
+    <td style="text-align: center;">1E-12</td>
+    <td style="text-align: center;">1E-9</td>
+    <td style="text-align: center;">1E-6</td>
+    <td style="text-align: center;">1E-3</td>
+    <td style="text-align: center;">1E3</td>
+    <td style="text-align: center;">1E6</td>
+    <td style="text-align: center;">1E9</td>
+    <td style="text-align: center;">1E12</td>
+    <td style="text-align: center;">1E15</td>
+    <td style="text-align: center;">1E18</td>
+  </tr>
+</tbody>
+</table>
+
+<script type='text/javascript' src='../scripts/calculator_script.js' defer></script>
+
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>At least, useful to someone doing optics/spectroscopy/chemistry.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+            </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="../feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>
