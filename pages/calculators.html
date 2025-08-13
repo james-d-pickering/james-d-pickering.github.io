@@ -47,7 +47,7 @@
                 <h1>Calculators</h1>
                 <h4>Unit Conversions</h4>
 <p>There are a lot of nice online unit converters, but they all do different things. Here's an attempt at rationalising them so that everything useful<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is in one place. Put one quantity in and the others will all change accordingly. Mouseover text on the label of each textbox gives some additional information. </p>
-<p>You can type in scientific notation (i.e. 800nm would be writing <code>800E-9</code> in the wavelength box). I mostly left the quantities in their base units, because:</p>
+<p>You can type in scientific notation (e.g. you can get 800nm by writing <code>800E-9</code> in the wavelength box). I mostly left the quantities in their base units, because:</p>
 <ul>
 <li>It would get very messy with separate cells for MHz, GHz, THz, etc.</li>
 <li>We should all know the prefixes and be able to multiply and divide powers of 10.</li>
@@ -69,7 +69,7 @@
 </tr>
 
 <tr>
-<td title='Standard in atomic units. Roughly twice the ionisation energy of the electron in a ground state hydrogen atom.'> <label for='energyH'>Energy (Hartree):</label> </td>
+<td title='Standard in atomic units. 1 Hartree is roughly twice the ionisation energy of the electron in a ground state hydrogen atom.'> <label for='energyH'>Energy (Hartree):</label> </td>
 <td> <input type="text" id='energyH' name='energyH' size=8> </td>
 <td title='Energy used when 1kW of power is consumed for an hour.'> <label for='energykWh'>Energy (kWh):</label> </td>
 <td> <input type="text" id='energykWh' name='energykWh' size=8> </td>
@@ -84,7 +84,7 @@
 <tr>
 <td title='Complete oscillations (cycles) per second.'> <label for="freq">Frequency (Hz):</label> </td>
 <td> <input type="text" id="freq" name="freq" size=8> </td>
-<td title='As frequency, but expressed in radians per second rather than complete cycles per second (2pi radians in a cycle, so factor of 2pi difference).'> <label for="angfreq">Angular Frequency (rad Hz):</label> </td>
+<td title='As frequency, but expressed in radians per second rather than complete cycles per second (2pi radians in a cycle, so factor of 2pi different to the ordinary frequency).'> <label for="angfreq">Angular Frequency (rad Hz):</label> </td>
 <td> <input type="text" id="angfreq" name="angfreq" size=8> </td>
 
 </tr>
@@ -102,7 +102,7 @@
 <tr>
 <td title='Complete oscillations (cycles) per metre.'> <label for="wavenumber">Wavenumber (m-1):</label> </td>
 <td> <input type="text" id="wavenumber" name="wavenumber" size=8> </td>
-<td title='As wavenumber, but expressed in radians per second rather than complete cycles per second (2pi radians in a cycle, so factor of 2pi difference).'> <label for="angwavenumber">Angular Wavenumber (m-1):</label> </td>
+<td title='As wavenumber, but expressed in radians per second rather than complete cycles per second (2pi radians in a cycle, so factor of 2pi different to the ordinary wavenumber).'> <label for="angwavenumber">Angular Wavenumber (m-1):</label> </td>
 <td> <input type="text" id="angwavenumber" name="angwavenumber" size=8> </td>
 </tr>
 
@@ -118,9 +118,9 @@
 </tr>
 
 <tr>
-<td title='Thermal Energy = kT, where k is the Boltzmann constant. So this is E/k.'> <label for='temperature'>Equivalent Temperature (K):</label> </td>
+<td title='Thermal Energy E = kT, where k is the Boltzmann constant. So this is E/k.'> <label for='temperature'>Equivalent Temperature (K):</label> </td>
 <td> <input type="text" id='temperature' name='temperature' size=8> </td>
-<td title='Same as wavenumber (i.e. 1/wavelength, not angular wavenumber), but in inverse centimetres not metres for historical reasons.'> <label for="wavenumbercm">Spectroscopic Wavenumber (cm-1):</label> </td>
+<td title='Same as wavenumber (i.e. 1/wavelength, not the same as angular wavenumber), but in inverse centimetres not inverse metres for historical reasons.'> <label for="wavenumbercm">Spectroscopic Wavenumber (cm-1):</label> </td>
 <td> <input type="text" id="wavenumbercm" name="wavenumbercm" size=8> </td>
 </tr>
 
@@ -178,7 +178,7 @@
 
 
 <tr>
-<td title='Archaic spectroscopy energy units, basically half a Hartree (13.6eV).'> <label for='rydberg'> Rydbergs:</label> </td>
+<td title='Archaic spectroscopy energy units, 1 Rydberg is basically half a Hartree (13.6eV).'> <label for='rydberg'> Rydbergs:</label> </td>
 <td> <input type='text' id='rydberg' name='rydberg' size=8> </td>
 <td title='Energy units in the cgs system. Equal to 100nJ.'> <label for='erg'> Ergs:</label> </td>
 <td> <input type='text' id='erg' name='erg' size=8> </td>
@@ -186,7 +186,7 @@
 
 
 <tr>
-<td title='Barrels of oil that, when burned, would release the energy given.'> <label for='booe'> Barrels of Oil Equivalent:</label> </td>
+<td title='Barrels of oil that, when burned, would release the energy given. One barrel is about 159 litres, and would release about 6 GJ when burned.'> <label for='booe'> Barrels of Oil Equivalent:</label> </td>
 <td> <input type='text' id='booe' name='booe' size=8> </td>
 <td title='4.184 Joules. Nutritionists use this and a value 1000 times bigger interchangably, what a faff.'> <label for='calorie'> Calories:</label> </td>
 <td> <input type='text' id='calorie' name='calorie' size=8> </td>
@@ -237,7 +237,7 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>At least, useful to someone doing optics/spectroscopy/chemistry.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>At least, useful to someone doing basic optics/spectroscopy/chemistry. For more serious optical work it is hard to beat the <a href="https://toolbox.lightcon.com/">Light Conversion Optics Toolbox</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

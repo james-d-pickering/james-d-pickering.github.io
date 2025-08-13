@@ -16,7 +16,7 @@ const erg = 1.0E-7
 const booe = 6.0E9
 
 function formatNumber(num, decimals = ndp) {
-    if (num > 1000 || num < 0.001) {
+    if (Math.abs(num) > 1000 || Math.abs(num) < 0.001) {
         return num.toExponential(decimals);
     } else {
         return num.toFixed(decimals);
