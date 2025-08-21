@@ -28,17 +28,9 @@ var freqbox = document.getElementById("freq")
 freqbox.toJoule = function() {return freqbox.value * planck}
 freqbox.fromJoule = function(energyJ) {return energyJ / planck }
 
-// var freqboxTHz = document.getElementById("freqTHz")
-// freqboxTHz.toJoule = function() {return (freqboxTHz.value * 1E12) * planck}
-// freqboxTHz.fromJoule = function(energyJ) {return energyJ / (planck*1E12) }
-
 var angfreqbox = document.getElementById("angfreq")
 angfreqbox.toJoule = function() {return freqbox.value * planck/ (2*pi)}
 angfreqbox.fromJoule = function(energyJ) {return 2*pi*energyJ / planck }
-
-// var angfreqboxTHz = document.getElementById("angfreqTHz")
-// angfreqboxTHz.toJoule = function() {return (angfreqboxTHz.value * 1E12) * planck/ (2*pi)}
-// angfreqboxTHz.fromJoule = function(energyJ) {return 2*pi* energyJ / (planck*1E12) }
 
 var hartreebox = document.getElementById("energyH")
 hartreebox.toJoule = function() {return hartreebox.value * hartree}
@@ -52,14 +44,9 @@ var energyJbox = document.getElementById("energyJ")
 energyJbox.toJoule = function() {return (energyJbox.value)}
 energyJbox.fromJoule = function(energyJ) {return (energyJ)}
 
-// var energykJbox = document.getElementById("energykJ")
-// energykJbox.toJoule = function() {return (energykJbox.value*1000)}
-// energykJbox.fromJoule = function(energyJ) {return (energyJ/1000)}
-    
 var energyeVbox = document.getElementById('energyeV')
 energyeVbox.toJoule = function() {return (energyeVbox.value*electronvolt)}
 energyeVbox.fromJoule = function(energyJ) {return (energyJ/electronvolt)}
-
     
 var energykJmolbox = document.getElementById('energykJmol')
 energykJmolbox.toJoule = function() {return (1000*energykJmolbox.value/avogadro)}
@@ -72,18 +59,10 @@ energykcalmolbox.fromJoule = function(energyJ) {return (energyJ*avogadro/(1000*k
 var timebox = document.getElementById('time')
 timebox.toJoule = function() {return planck/timebox.value}
 timebox.fromJoule = function(energyJ) {return planck/energyJ}
-
-// var timeboxfs = document.getElementById('timefs')
-// timeboxfs.toJoule = function() {return planck/(timeboxfs.value*1E-15)}
-// timeboxfs.fromJoule = function(energyJ) {return (planck/energyJ)*1E15}
     
 var wavelengthbox = document.getElementById('wavelength')
 wavelengthbox.toJoule = function() {return planck*c/wavelengthbox.value}
 wavelengthbox.fromJoule = function(energyJ) {return planck*c/energyJ}
-
-// var wavelengthboxnm = document.getElementById('wavelengthnm')
-// wavelengthboxnm.toJoule = function() {return planck*c/(wavelengthbox.value*1E-9)}
-// wavelengthboxnm.fromJoule = function(energyJ) {return (planck*c/energyJ)*1E9}
 
 var wavenumberbox = document.getElementById('wavenumber')
 wavenumberbox.toJoule = function() {return planck*c*wavenumberbox.value}
@@ -96,10 +75,6 @@ wavenumberboxcm.fromJoule = function(energyJ) {return energyJ/(planck*c*100)}
 var angwavenumberbox = document.getElementById('angwavenumber')
 angwavenumberbox.toJoule = function() {return planck*c*(angwavenumberbox.value/(2*pi))}
 angwavenumberbox.fromJoule = function(energyJ) {return 2*pi*energyJ/(planck*c)}
-
-// var angwavenumberboxcm = document.getElementById('angwavenumbercm')
-// angwavenumberboxcm.toJoule = function() {return planck*c*(angwavenumberbox.value/(2*pi))*100}
-// angwavenumberboxcm.fromJoule = function(energyJ) {return 2*pi*energyJ/(planck*c*100)}
 
 var temperaturebox = document.getElementById('temperature')
 temperaturebox.toJoule = function() {return temperaturebox.value * boltz}
@@ -206,8 +181,6 @@ function update_form(event) {
          }
     console.log(boxes_unchanged)
     for (box of boxes_unchanged) {
-       // console.log('hereJ');
-       // console.log(box.fromJoule(change_J));
 
         box.value = formatNumber(box.fromJoule(change_J))
 
