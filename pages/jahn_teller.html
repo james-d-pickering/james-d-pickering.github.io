@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>James D Pickering | Thinking about Molecules: The Jahn-Teller Theorem</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link href="http://jamesdpickering.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
+    <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="jdpicks" />
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1M07TKD861"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1M07TKD861');
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/pages/teaching.html">Teaching</a></li>
+                <li><a href="/pages/research.html">Research</a></li>
+                <li><a href="/pages/programs.html">Programs</a></li>
+                <li><a href="/pages/calculators.html">Calculators</a></li>
+                <li><a href="/pages/misc.html">Misc</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="../">James D Pickering</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <div class="page">
+                <h1>Thinking about Molecules: The Jahn-Teller Theorem</h1>
+                <p>Recently I was teaching the <a href="https://en.wikipedia.org/wiki/Jahn%E2%80%93Teller_effect">Jahn-Teller Effect</a> to a group of undergraduate chemists. Not really being a card-carrying chemist anymore<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, I approached it from quite a physical point of view - giving them the strong statement of the Jahn-Teller Theorem (JTT) from the <a href="https://royalsocietypublishing.org/doi/abs/10.1098/rspa.1937.0142">original</a>  <a href="https://royalsocietypublishing.org/doi/abs/10.1098/rspa.1938.0008">publications</a> :</p>
+<blockquote>
+<p><em>Stability and degeneracy are not possible simultaneously unless the molecule is a linear one.</em></p>
+</blockquote>
+<p>Specifically in the case we are talking about, we mean <em>orbital degeneracy</em> -  where the valence electrons of the molecule occupy a degenerate set of orbitals (e.g. a <span class="math">\(\pi^1\)</span>  configuration in a linear molecule or an <span class="math">\(e_g^2\)</span> configuration in a d-block complex). The JTT essentially says if this degeneracy occurs in a nonlinear molecule, that the symmetry of the molecule will be reduced in order to remove the degeneracy, and lower the overall energy of the molecule. This way of stating the JTT without a specific molecular context given up front caused some confusion, which I think shines two interesting lights on how we teach students to think about chemistry:</p>
+<ol>
+<li>We tend to teach molecular structure in a very <strong>step-by-step</strong> way. Like, <em>a molecule forms with a structure, the molecule notices it can change it's structure to lower its energy, so it changes</em>. This clearly isn't really how it works, but I think we inadvertently reinforce that view.</li>
+<li>We sometimes get siloed into our IOP boxes and fail to communicate how general lots of concepts are (i.e. the JTT applies to <em>all</em> molecules).</li>
+</ol>
+<p>The Jahn-Teller Theorem provides nice examples of both of these things which are explained in this post. Below the rest of this post is a (hopefully) readable summary of the main ideas of the arguments in the original paper from Jahn and Teller in 1937 - which actually provide a nice, if quite physical, way to introduce the idea.</p>
+<h3>d-block Complexes and step-by-step bonding</h3>
+<p>The traditional way of teaching the JTT in chemistry is to talk about a <em>Jahn-Teller Distortion</em>, and specifically a <em>Jahn-Teller Distortion of an Octahedral Complex</em> (at least, that seems to be <em>the</em> example that is universally used). Here we have a familiar picture of an <em>asymmetrically filled set of degenerate orbitals</em>, that, after a distortion where the symmetry descends from <span class="math">\(O_h\)</span> to <span class="math">\(D_{4h}\)</span> can produce a configuration with a lower overall energy. Something like the below - clearly the energy is lowered in <span class="math">\(D_{4h}\)</span> relative to <span class="math">\(O_h\)</span> symmetry.</p>
+<p><img src="../images/octahedral_JTT 1.png" alt="Jahn-Teller distortion of an octahedral (Oh point group) complex to a square planar (D4h) point group) one." width="70%"></p>
+<p>In my lecture, I then went through a range of octahedral <span class="math">\(d^n\)</span> configurations, asking students to tell me whether we would expect to see a distortion or not. The confusion arose around the <span class="math">\(d^8\)</span> configuration <span class="math">\(t_{2g}^6 e_g^2\)</span>. They all told me that this configuration wouldn't distort (which, to be fair, it wouldn't really for any normal d-block complex example). I then asked why something like the below couldn't happen, where a degenerate state containing two electrons with paired spins distorts to create a clearly lower energy structure, as the initial state is still spatially degenerate and so shouldn't be stable according to the JTT.</p>
+<p><img src="../images/octahedral_JTT_d8.png" alt="Illegal - violating Hund!." width="70%"></p>
+<p>The answer was overwhelmingly <em>you can't make that initial state with paired spins because it violates Hund's rules</em>. </p>
+<p>This answer was interesting because I think it belies some fundamental issue in how we teach students to think about chemistry. Whether subconsciously or not, the students were basically thinking of this process as:</p>
+<ol>
+<li>Find the electron configuration. </li>
+<li>Fill up the orbitals according to Hund's rules. </li>
+<li>Look and see if a distortion can happen.</li>
+<li>If it can, do the distortion and preserve the orbital occupancy (and in particular, the spins) from step 2. </li>
+</ol>
+<p>Obviously this <strong>isn't</strong> what happens - a complex like CuF<span class="math">\(_6\)</span> doesn't start life as octahedral, then think <em>'shit, I could lower my energy by undergoing a distortion!'</em> and then distort<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. We then had quite an extensive discussion where it was clear that their view was that you had to first satisfy Hund, and then do a distortion - and satisfying Hund would mean that you have <em>parallel</em> spins in your ground state <span class="math">\(e_g^2\)</span> configuration in <span class="math">\(O_h\)</span>, so can't move to a <span class="math">\(b_{1g}^2\)</span> configuration with <em>paired</em> spins in the distorted <span class="math">\(D_{4h}\)</span> structure. Once I said that whether you could do this depended on the energy cost of flipping a spin compared to the lowering due to the JTT<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>, they seemed OK with the idea, but the initial thought process was clearly quite 'sequential': <em>form a complex, look at the electrons, if you can distort, then distort</em>. This is a clear example of them thinking about molecular structure in a <em>step-by-step</em> way.</p>
+<p>Now, obviously this step-by-step picture isn't really what happens, but it got me thinking that we (including myself) probably inadvertently reinforce this view with how we teach molecular structure from quite early levels in chemical education. Simple Lewis pictures of bonding where two fluorine atoms are hanging around being unstable and annoyed, until they meet each other and realise they can lower their collective energy, are one example that subscribes to this step-by-step idea. Clearly in that case the step-by-step model is much closer to the truth, and it's probably still the best way to teach chemical bonding at an introductory level, but the same step-by-step approach clearly breaks down in more complex cases. One of these cases is described below - a Jahn-Teller distortion in an organic molecule.</p>
+<h3>Jahn-Teller Effects in COT</h3>
+<p>In a lecture before the one just mentioned, I was talking about <a href="https://en.wikipedia.org/wiki/H%C3%BCckel_method">Hückel Theory</a> and the basis of the <span class="math">\(4n+2\)</span> rule for aromaticity. An interesting example here is to apply Hückel theory to cyclooctatetraene (COT)<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>, and look at the result.</p>
+<p><img src="../images/COT_structure.png" alt="Cyclooctatetraene" width="30%"></p>
+<p>We expect that the 8-membered ring should not be aromatic (it doesn't follow the <span class="math">\(4n+2\)</span> rule), but a naive Hückel calculation on the structure above would actually imply that it is, or at least, that it is a bit. A fully delocalised, planar, COT has a lower energy than the non-delocalised variant using simple Hückel theory. So why is it not aromatic in practice?</p>
+<p>Well, the Hückel theory electronic structure shows that COT has a <strong>degenerate ground state</strong> (the rough MO diagram is shown below, as calculated using simple Hückel Theory). Simple Hückel theory also assumes that COT is planar, but measurements show that it isn't. <em>COT is distorted away from planar due to the Jahn-Teller Effect</em>. The structure is distorted away from planar and this orbital degeneracy in the ground state is removed - a classic example of the JTT<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>. Note that if you took the step-by-step approach, and initially populated the COT molecular orbitals using Hund's rules (so had parallel spins in the HOMO), you would assume this was impossible as the wisdom is that you can't flip a spin. But in reality, the molecule doesn't start life planar - it never has to form that degenerate state with the paired or parallel spins in the first place!</p>
+<p><img src="../images/COT.png" alt="Cyclooctatetraene MO diagram (within Huckel theory)" width="70%"></p>
+<p>More interestingly in this case, it was clear that most students hadn't considered Jahn-Teller Distortions as something that was possible in an organic molecule like COT. An informal show of hands revealed that most students believed that Jahn-Teller distortions were things that only happened to octahedral inorganic complexes, rather than a wider phenomenon that manifests itself in many different areas.</p>
+<p>This is a bit of a shame - not least for Jahn and Teller, who did all the tedious group theory to demonstrate that it applies to every molecule - and I think is symptomatic of a wider issue with the silo-ing of chemistry education into 'inorganic', 'organic', and 'physical' boxes. Too often we fail to communicate how general a lot of ideas are - which does a disservice to our students, especially as the boundaries between those boxes are increasingly blurred. </p>
+<p>Anyway, this experience felt interesting enough to me to warrant writing it down. Perhaps it will be interesting to you too, if you're into science education as well.</p>
+<h4>Appendix: Jahn and Teller's Argument Outlined Briefly</h4>
+<p>A reminder of the basic theorem:</p>
+<blockquote>
+<p><em>Stability and degeneracy are not possible simultaneously unless the molecule is a linear one.</em></p>
+</blockquote>
+<p>The structure of the argument proving this in the original paper essentially considers a hypothetical arrangement of nuclei (a <em>nuclear configuration</em>) and thinks about how the energy of the configuration can change if one of the nuclei is displaced. The key observation is that a given configuration cannot be stable if the electronic energy depends <em>linearly</em> on a nuclear displacement. In simple terms, if this was the case, then clearly you are always able to displace one of the nuclei to lower the energy - making a new, more stable, configuration. We can see this same idea mathematically, if we consider the change in the electronic energy <span class="math">\(E\)</span> with the nuclear displacement along coordinate <span class="math">\(Q\)</span>, then a linear dependence means that:
+</p>
+<div class="math">$$
+\frac{\partial E}{\partial Q} \neq 0 \rightarrow F_Q \neq 0
+$$</div>
+<p>
+Where we note that the <em>force along <span class="math">\(Q\)</span></em> , <span class="math">\(F_Q\)</span>, is given by the negative of the derivative of the energy:
+</p>
+<div class="math">$$
+F_Q = - \frac{\partial E}{\partial Q}
+$$</div>
+<p>
+The linear dependence of the energy on nuclear displacement therefore implies that <span class="math">\(F_Q\)</span> is non-zero, which implies that there is then a <em>force along coordinate <span class="math">\(Q\)</span></em> that will distort the molecular structure: making the molecule unstable. </p>
+<p>Then two illustrative examples are shown, the first of which goes roughly as follows. Imagine a triatomic linear molecule with one electron in its valence shell - or as described by Jahn and Teller, <em>a single electron moving in the field of three nuclei lying on a straight line</em>. The electronic states of this electron can be classified as <span class="math">\(\sigma\)</span>, <span class="math">\(\pi\)</span>, or <span class="math">\(\delta\)</span> type as usual, where the <span class="math">\(\pi\)</span> and <span class="math">\(\delta\)</span> states are orbitally degenerate for a linear configuration<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
+<p>If, then, one of the three nuclei is displaced by a distance <span class="math">\(d\)</span>, then the degeneracy is lifted and the states have energies <span class="math">\(E_a\)</span> and <span class="math">\(E_s\)</span> depending on their symmetry relative to the plane of the nuclei (antisymmetric or symmetric). As <span class="math">\(d\)</span> changes the two energies will change, and the energy as a function of <span class="math">\(d\)</span> must be an even function as shown in the figure below from the original work: clearly the energy when the displacement is <span class="math">\(-d\)</span> is the same as it is when it is <span class="math">\(+d\)</span>. </p>
+<p><img src="../images/JTT_original.png" alt="Figure from Jahn and Teller, 1937" width="60%"></p>
+<p>Hence, when the molecule is <strong>linear</strong> <span class="math">\(d=0\)</span>, <span class="math">\(E_a = E_s\)</span>, and the energy is minimised: <strong>we have simultaneous stability and degeneracy</strong>. In contrast, when the molecule is <strong>nonlinear</strong>, <span class="math">\(d \neq 0\)</span> and <span class="math">\(E_a \neq E_s\)</span>: our most stable state is now either <span class="math">\(E_a\)</span> or <span class="math">\(E_s\)</span>, but they must have different energies. <strong>To have stability, we have to lose our degeneracy.</strong></p>
+<p>This example captures the essence of the JTT: <strong>you cannot have stability and degeneracy simultaneously except when the molecule is linear</strong>. The bulk of the paper then uses some intricate group theory and perturbation theory arguments to show that for an orbitally degenerate state, the only case where these linear <span class="math">\(\frac{\partial E}{\partial Q}\)</span> terms vanish is when the nuclear configuration has total axial symmetry: i.e. the nuclei lie on a straight line, and the molecule is linear. Thus, any nonlinear molecule with an orbitally degenerate ground state will always have some nonzero <span class="math">\(\frac{\partial E}{\partial Q}\)</span> term, and hence some nonzero force <span class="math">\(F_Q\)</span> that will distort the nuclear configuration in a way that lowers the energy and lifts the degeneracy.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Literally, as I let my RSC membership lapse after their pathetic response to the current crisis facing chemistry in UK HE.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Also, Hund's rules only really work properly for atoms, but this is a pedantic point.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>And yeah, the energy cost of flipping a spin is normally much higher than the energy you get back by undergoing a JT distortion.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>This example is probably just about small and symmetrical enough for a masochist to do y han, but I would just use the excellent HuLiS program: https://ctom-ism2.github.io/hulis/index.shtml&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>At least, within the simple Hückel Theory approximations.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>i.e. you can think about the <span class="math">\(\pi\)</span> state as being one where the orbital angular momentum of the electron <span class="math">\(\lambda = \pm 1\)</span> - corresponding to clockwise and anti-clockwise rotation around the internuclear axis.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="../feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>
