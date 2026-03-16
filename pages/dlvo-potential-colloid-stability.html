@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>James D Pickering | DLVO Potential + Colloid Stability</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link href="http://jamesdpickering.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
+    <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="jdpicks" />
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1M07TKD861"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1M07TKD861');
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/pages/teaching.html">Teaching</a></li>
+                <li><a href="/pages/research.html">Research</a></li>
+                <li><a href="/pages/programs.html">Programs</a></li>
+                <li><a href="/pages/calculators.html">Calculators</a></li>
+                <li><a href="/pages/plots.html">Plots</a></li>
+                <li><a href="/pages/misc.html">Misc</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="../">James D Pickering</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <div class="page">
+                <h1>DLVO Potential + Colloid Stability</h1>
+                <p>The plot below shows some plots of a simple version of the <a href="https://en.wikipedia.org/wiki/DLVO_theory">DLVO Potential</a> for the energy <span class="math">\((V_{\text{DLVO}}\)</span> between two spherical colloidal particles separated by a distance <span class="math">\(r\)</span>. Intended primarily as a teaching tool, it is definitely <strong>not</strong> numerically accurate, but does illustrate the physics well enough to give you a feel what's happening.</p>
+<p>The DLVO potential is treated as a simple sum of hard sphere repulsion (v. short range), <a href="https://en.wikipedia.org/wiki/Double_layer_(surface_science)">electrical double layer</a> repulsion (intermediate range), and <a href="https://en.wikipedia.org/wiki/Van_der_Waals_force">van der Waals</a> attraction (long range). 
+</p>
+<div class="math">$$
+V_{\text{DLVO}}(r) \sim V_{\text{Hard Sphere}}(r) + V_{\text{Double Layer}}(r) + V_{\text{van der Waals}}(r)
+$$</div>
+<p>
+This model works well enough to illustrate the key points: a primary minimum (coagulation), secondary minimum (flocculation), and a barrier between them. The precise form for the terms is:
+</p>
+<div class="math">$$
+V_{\text{DLVO}}(r) \sim \frac{D}{r^{12}} + \frac{B\,\,L_D^2 \exp\left(-\frac{r}{L_D}\right)}{r^Y} - \frac{A}{r^{n}}
+$$</div>
+<p>
+Parameters are defined as:</p>
+<ul>
+<li><span class="math">\(L_D\)</span> is the <a href="https://en.wikipedia.org/wiki/Debye_length">Debye-Hückel screening length</a>.</li>
+<li><span class="math">\(A\)</span> is roughly proportional to the Hamaker constant for the particles (attractions)</li>
+<li><span class="math">\(B\)</span> is a scaling factor that controls the amount of double layer repulsion.</li>
+<li><span class="math">\(n\)</span> sets the length scale of the van der Waals interactions (typically 1 or 2 for colloidal particles, 6 for molecules).</li>
+<li><span class="math">\(Y\)</span> is set to 1 if the repulsion potential is set to '<a href="https://en.wikipedia.org/wiki/Yukawa_potential">Yukawa</a>', otherwise set to zero to give a simple exponential.</li>
+<li><span class="math">\(D\)</span> is set to be <span class="math">\(10^{-8}\)</span>.</li>
+</ul>
+<p>The energy zero point is defined as the energy of the particles at infinite separation.</p>
+<style>
+#controls {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 12px 16px;
+  max-width: 500px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-family: sans-serif;
+}
+
+#controls label {
+  align-self: center;
+  font-weight: 500;
+}
+
+#controls input[type="range"],
+#controls select {
+  width: 100%;
+}
+</style>
+
+<div id="controls">
+
+  <label>Attractions (\(A\)) = <span id="aValue">0.2</span></label>
+  <input type="range" id="aSlider" min="0" max="5" step="0.001" value="0.2">
+
+  <label> DL Repulsion (\(B\)) = <span id="bValue">0.2</span></label>
+  <input type="range" id="bSlider" min="0" max="5" step="0.001" value="0.2">
+
+  <label>Screening Length (\(L_D\)) = <span id="kValue">0.2</span></label>
+  <input type="range" id="kSlider" min="0" max="5" step="0.001" value="1">
+
+  <label for="attdropdown">Degree of vdW Attraction (\(n\)):</label>
+  <select id="attdropdown">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+  </select>
+
+  <label for="repdropdown">Type of Repulsion Potential:</label>
+  <select id="repdropdown">
+    <option value="exponential">Exponential</option>
+    <option value="yukawa">Yukawa</option>
+  </select>
+
+  <label for="presetdropdown">Presets:</label>
+  <select id="presetdropdown">
+    <option value="coagulated">Coagulated Suspension</option>
+    <option value="flocculated">Flocclated Suspension</option>
+    <option value="stable">Stable Dispersion</option>
+  </select>
+</div>
+
+<canvas id="chart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type='module' src="../scripts/plot_script.js"></script>
+
+<p>Notes on the presets:</p>
+<ul>
+<li><em>Coagulated Suspension</em> shows the case where there is no barrier, attractions win, and the suspension irreversibly falls into the primary deep minimum and coagulates. Soy milk turns to tofu. Milk turns to butter.</li>
+<li><em>Flocculated Suspension</em> shows the case where there is a barrier that produces a secondary minimum, where the suspension will reversibly flocculate (provided that <span class="math">\(k_BT\)</span> is lower than the depth of the minimum). </li>
+<li><em>Stable Dispersion</em> shows the case where the repulsion is so strong that there is no secondary minimum, and the particles are kept away from each other: kinetically trapped as a colloidal dispersion.</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="../feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>
