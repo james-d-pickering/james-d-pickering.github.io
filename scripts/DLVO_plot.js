@@ -1,4 +1,3 @@
-"use strict";
 const aslider = document.getElementById("aSlider");
 const aValue = document.getElementById("aValue");
 const kslider = document.getElementById("kSlider");
@@ -9,6 +8,7 @@ const ctx = document.getElementById("chart").getContext("2d");
 const attdropdown = document.getElementById("attdropdown");
 const repdropdown = document.getElementById("repdropdown");
 const presetdropdown = document.getElementById("presetdropdown");
+const zoombutton = document.getElementById("zoombutton");
 const k_init = 1;
 const a_init = 0.2;
 const b_init = 1;
@@ -94,6 +94,21 @@ const chart = new Chart(ctx, {
     options: {
         responsive: true,
         plugins: {
+            zoom: {
+                zoom: {
+                    wheel: {
+                        enabled: false,
+                    },
+                    drag: {
+                        enabled: true,
+                    },
+                    pinch: {
+                        enabled: false,
+                    },
+                    mode: 'xy',
+                },
+                pan: { enabled: false },
+            },
             legend: {
                 position: 'top', labels: {
                     pointStyle: 'line',
@@ -121,6 +136,9 @@ const chart = new Chart(ctx, {
             }
         }
     }
+});
+zoombutton.addEventListener('click', () => {
+    chart.resetZoom();
 });
 function updateGraph(a, b, k, deg = Number(attdropdown.value), rep_potential = repdropdown.value) {
     const data_att = DLVO_attraction(rs, a, deg);
@@ -206,3 +224,4 @@ presetdropdown.addEventListener("change", () => {
         updateGraph(a, b, k, deg, repdropdown.value);
     }
 });
+export {};

@@ -98,13 +98,13 @@ Parameters are defined as:</p>
 <div id="controls">
 
   <label>Attractions (\(A\)) = <span id="aValue">0.2</span></label>
-  <input type="range" id="aSlider" min="0" max="5" step="0.001" value="0.2">
+  <input autocomplete="off" type="range" id="aSlider" min="0" max="5" step="0.001" value="0.2">
 
   <label> DL Repulsion (\(B\)) = <span id="bValue">0.2</span></label>
-  <input type="range" id="bSlider" min="0" max="5" step="0.001" value="0.2">
+  <input autocomplete="off" type="range" id="bSlider" min="0" max="5" step="0.001" value="0.2">
 
   <label>Screening Length (\(L_D\)) = <span id="kValue">0.2</span></label>
-  <input type="range" id="kSlider" min="0" max="5" step="0.001" value="1">
+  <input autocomplete="off" type="range" id="kSlider" min="0" max="5" step="0.001" value="1">
 
   <label for="attdropdown">Degree of vdW Attraction (\(n\)):</label>
   <select id="attdropdown">
@@ -132,8 +132,11 @@ Parameters are defined as:</p>
 
 <canvas id="chart"></canvas>
 
+<p><button type=button id='zoombutton'>Reset zoom</button></p>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type='module' src="../scripts/plot_script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js "></script>
+<script type='module' src="../scripts/DLVO_plot.js"></script>
 
 <p>Notes on the presets:</p>
 <ul>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>James D Pickering | Kinetics</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link href="http://jamesdpickering.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
+    <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="jdpicks" />
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1M07TKD861"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1M07TKD861');
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/pages/teaching.html">Teaching</a></li>
+                <li><a href="/pages/research.html">Research</a></li>
+                <li><a href="/pages/programs.html">Programs</a></li>
+                <li><a href="/pages/calculators.html">Calculators</a></li>
+                <li><a href="/pages/plots.html">Plots</a></li>
+                <li><a href="/pages/misc.html">Misc</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="../">James D Pickering</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <div class="page">
+                <h1>Kinetics</h1>
+                <p>The interactive plot below shows the solutions to a range of <a href="https://en.wikipedia.org/wiki/Rate_equation">rate equations</a> commonly encountered in <a href="https://en.wikipedia.org/wiki/Chemical_kinetics">chemical kinetics</a>. </p>
+<p>The specific rate equation can be selected through the dropdown box (chemical equations in the table below), and the values of the various <a href="https://en.wikipedia.org/wiki/Reaction_rate_constant">rate constants</a> and initial concentrations of reagents adjusted to see the effect they have on the kinetics. The plot shows the concentrations of species <span class="math">\(A, B, C...\)</span> against time. Details on the models used, info on how it works, and some ideas for interesting things to explore/use in teaching are below the plot.</p>
+<div class="math">$$
+\begin{array}{cc}
+\hline
+\textsf{Dropdown Heading} &amp; \textsf{Chemical Equation} \\
+\hline
+ \textsf{A-&gt;B} &amp; A \xrightarrow{k_1} B\\
+ \textsf{A-&gt;B-&gt;C (sequential)} &amp; A  \xrightarrow{k_1} B  \xrightarrow{k_2} C \\
+ \textsf{A-&gt;B-&gt;C (parallel)} &amp; A  \xrightarrow{k_1} B ~\textsf{and}~ A \xrightarrow{k_2} C \\
+ \textsf{A+B-&gt;C} &amp; A + B \xrightarrow{k_1} C \\
+ \textsf{A-&gt;B (autocatalysis)} &amp; A\xrightarrow{k_1} B \\
+ \textsf{A+B&lt;-&gt;C-&gt;D} &amp; A+B \underset{k_2}{\stackrel{k_1}{\rightleftharpoons}}C  \xrightarrow{k_3} D \\
+ \textsf{A+B&lt;-&gt;C-&gt;D+A} &amp; A+B \underset{k_2}{\stackrel{k_1}{\rightleftharpoons}} C  \xrightarrow{k_3} D+A \\
+\hline
+\end{array}
+$$</div>
+<p><br></p>
+<style>
+#controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-family: sans-serif;
+  center
+}
+
+#controls2 {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  max-width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-family: sans-serif;
+  center
+}
+
+
+.control-group {
+  display: grid;
+  grid-template-columns: 1fr 3fr; 
+  gap: 12px 16px;
+}
+
+.control-group label {
+  align-self: center;
+  font-weight: 500;
+}
+
+.control-group input[type="range"],
+.control-group select {
+  width: 50%;
+}
+
+@media (max-width: 900px) {
+  #controls {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div id="controls">
+
+<div class='control-group'>
+  <label>\(k_1\) = <span id="k1Value">1</span></label>
+  <input autocomplete="off" type="range" id="k1Slider" min="0" max="10" step="0.001" value="1">
+
+   <label>\(k_2\) = <span id="k2Value">1</span></label>
+  <input autocomplete="off" type="range" id="k2Slider" min="0" max="10" step="0.001" value="1">
+
+   <label>\(k_3\) = <span id="k3Value">1</span></label>
+  <input autocomplete="off" type="range" id="k3Slider" min="0" max="10" step="0.001" value="1">
+
+  <label for="presetdropdown">Presets:</label>
+  <select autocomplete='off' id="presetdropdown">
+    <option value="A-B" selected >A->B</option>
+    <option value="A-B-Cseq">A->B->C (sequential)</option>
+    <option value="A-B-Cpar">A->B->C (parallel)</option>
+    <option value="A+B-C">A+B->C</option>
+    <option value="A-Bcat">A->B (autocatalysis)</option>
+    <option value="A-B-C-D">A+B<->C->D</option>
+    <option value="A-B-C-DMM">A+B<->C->D+A</option>
+  </select>
+
+</div>
+
+<div class='control-group'>
+  <label>\([A]_0\) = <span id="y0Value">1</span></label>
+  <input autocomplete="off" type="range" id="y0Slider" min="0" max="5" step="0.001" value="1">
+
+  <label>\([B]_0\) = <span id="y1Value">0</span></label>
+  <input autocomplete="off" type="range" id="y1Slider" min="0" max="5" step="0.001" value="0">
+
+  <label>\([C]_0\) = <span id="y2Value">0</span></label>
+  <input autocomplete="off" type="range" id="y2Slider" min="0" max="5" step="0.001" value="0">
+
+  <label>\([D]_0\) = <span id="y3Value">0</span></label>
+  <input autocomplete="off" type="range" id="y3Slider" min="0" max="5" step="0.001" value="0">
+
+
+</div>
+
+</div>
+
+<canvas id="kinetics_chart"></canvas>
+
+<p><button type=button id='zoombutton'>Reset zoom</button></p>
+<p><br></p>
+<div id="controls2">
+<header> ODE Solver Options </header> <br>
+
+  <label> Step Size = <span id="stepValue">0.1</span></label>
+  <input autocomplete="off" type="range" id="stepSlider" min="0.01" max="5" step="0.01" value="0.1">
+  <label>Max Time = <span id="tmaxValue">10</span></label>
+  <input autocomplete="off" type="range" id="tmaxSlider" min="5" max="100" step="1" value="10">
+
+</div>
+
+<p><em>Note on how it works: I've written a simple (and frankly very satisfying) <a href="../scripts/ODE_solvers.ts">implementation</a> of the <a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">Runge-Kutta</a> (RK4) method in TypeScript that solves these equations numerically and reasonably quickly (this seemed easier than working out the analytical solutions for everything, and makes it trivial to add more examples later). You might experience some lag if you crank the step size down and the time range up to max, however (controls above).</em></p>
+<p>Detail on the selectable models:</p>
+<ol>
+<li>A-&gt;B. <ul>
+<li><span class="math">\(A \xrightarrow{k_1} B\)</span></li>
+<li>The simplest case. Useful to illustrate that as <span class="math">\(A\)</span> goes down, <span class="math">\(B\)</span> goes up, etc...</li>
+</ul>
+</li>
+<li>A-&gt;B-&gt;C sequential.  <ul>
+<li><span class="math">\(A  \xrightarrow{k_1} B  \xrightarrow{k_2} C\)</span></li>
+<li>Sequential reaction. Useful illustration of the <a href="https://en.wikipedia.org/wiki/Steady_state_(chemistry)#Steady_state_approximation_in_chemical_kinetics">steady-state approximation</a> (when <span class="math">\(k_1 &lt;&lt; k_2\)</span>).</li>
+</ul>
+</li>
+<li>A-&gt;B-&gt;C parallel.  <ul>
+<li><span class="math">\(A  \xrightarrow{k_1} B\)</span> and <span class="math">\(A \xrightarrow{k_2} C\)</span></li>
+<li>Parallel decay of A. Useful illustration of branching (test how the relative sizes of <span class="math">\(k_1\)</span> and <span class="math">\(k_2\)</span> affect the product ratio.)</li>
+</ul>
+</li>
+<li>A+B-&gt;C.  <ul>
+<li><span class="math">\(A + B \xrightarrow{k_1} C\)</span></li>
+<li>Simplest case of a bimolecular reaction. Useful to illustrate how if <span class="math">\([B]=0\)</span>, nothing happens.</li>
+</ul>
+</li>
+<li>A-&gt;B (autocatalysis).<ul>
+<li><span class="math">\(A\xrightarrow{k_1} B\)</span>, but where <span class="math">\(B\)</span> catalyses the reaction.</li>
+<li>Interesting example where the kinetics are described by the differential <a href="https://en.wikipedia.org/wiki/Logistic_function">logistic equation</a>. Similar behaviour to things like population dynamics models from biology.</li>
+</ul>
+</li>
+<li>A+B&lt;-&gt;C-&gt;D.<ul>
+<li><span class="math">\(A+B \rightleftarrows C  \xrightarrow{k_3} D\)</span></li>
+<li>Useful illustration of a pre-equilibrium. Play with <span class="math">\(k_1\)</span> and <span class="math">\(k_2\)</span> and see how the amount of <span class="math">\(C\)</span> changes.</li>
+</ul>
+</li>
+<li>A+B&lt;-&gt;C-&gt;D+A.<ul>
+<li><span class="math">\(A+B \rightleftarrows C  \xrightarrow{k_3} D+A\)</span></li>
+<li>As above but where <span class="math">\(A\)</span> is regenerated - as in enzyme kinetics (<a href="https://en.wikipedia.org/wiki/Michaelis%E2%80%93Menten_kinetics">Michaelis-Menten</a> mechanism). In this case, <span class="math">\(A\)</span> is the enzyme, <span class="math">\(B\)</span> is the substrate, <span class="math">\(C\)</span> is the enzyme-substrate complex, and <span class="math">\(D\)</span> is the product. Play with the rate constants and see when the traditional assumptions hold.</li>
+</ul>
+</li>
+</ol>
+<p>For models 4 to 7, ensure that <span class="math">\([B]_0 \neq 0\)</span>, or you won't get an interesting output! Note that controls that are not used in a given model (e.g. <span class="math">\(k_2\)</span> or <span class="math">\([C]_0\)</span> for model 1) will just have no effect on the output. <br></p>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js "></script>
+
+<script type='module' src="../scripts/kinetics_calculator_numerical.js"></script>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="../feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>

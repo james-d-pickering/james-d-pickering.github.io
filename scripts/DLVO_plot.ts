@@ -1,4 +1,5 @@
 //import Chart from "chart.js/auto";
+export {};
 declare const Chart: any;
 const aslider = document.getElementById("aSlider") as HTMLInputElement;
 const aValue = document.getElementById("aValue") as HTMLSpanElement;
@@ -10,6 +11,7 @@ const ctx = (document.getElementById("chart") as HTMLCanvasElement).getContext("
 const attdropdown = document.getElementById("attdropdown") as HTMLSelectElement;
 const repdropdown = document.getElementById("repdropdown") as HTMLSelectElement;
 const presetdropdown = document.getElementById("presetdropdown") as HTMLSelectElement;
+const zoombutton = document.getElementById("zoombutton") as HTMLButtonElement;
 
 const k_init = 1;
 const a_init = 0.2;
@@ -111,6 +113,21 @@ const chart = new Chart(ctx, {
     options: {
         responsive: true,
         plugins: {
+            zoom: {
+                zoom: {
+                    wheel: {
+                    enabled: false,
+                },
+                drag: { 
+                    enabled: true,
+                },
+                pinch: {
+                    enabled: false,
+                },
+                mode: 'xy',
+                },
+                pan: { enabled: false},
+            },
             legend: {
                 position: 'top', labels: {
                     pointStyle: 'line',
@@ -136,6 +153,10 @@ const chart = new Chart(ctx, {
             }
         }   
     }
+});
+
+zoombutton.addEventListener('click', () => { 
+    chart.resetZoom();
 });
 
 function updateGraph(a: number, b: number, k: number, deg: number = Number(attdropdown.value), rep_potential: string = repdropdown.value) {
