@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>James D Pickering | Gradient Descent</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link href="http://jamesdpickering.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
+    <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="jdpicks" />
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1M07TKD861"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1M07TKD861');
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/pages/teaching.html">Teaching</a></li>
+                <li><a href="/pages/research.html">Research</a></li>
+                <li><a href="/pages/programs.html">Programs</a></li>
+                <li><a href="/pages/calculators.html">Calculators</a></li>
+                <li><a href="/pages/plots.html">Plots</a></li>
+                <li><a href="/pages/misc.html">Misc</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="../">James D Pickering</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <div class="page">
+                <h1>Gradient Descent</h1>
+                <p>I was once described by a colleague as an <em>"armchair mathematician".</em> In retrospect, I am not sure if this was intended as a compliment or not, but I'll embrace it. In any case, it's probably preferable to <em>"the sweet spot between Sheldon Cooper and Alan Carr"</em>, which was a description in some student feedback a few years ago. </p>
+<p>As an armchair mathematician, I take a spectator-level interest in the awarding of the <a href="https://en.wikipedia.org/wiki/Fields_Medal">Fields medal</a>, especially since in 2022 it went to a <a href="https://en.wikipedia.org/wiki/James_Maynard_(mathematician)">man from my hometown</a>, and I am glad to see Essex represented on one of the biggest scientific stages. Whilst looking at the Fields medal awards in 2026, I came across the Gauss Prize, which was <a href="https://www.mathunion.org/imu-awards/carl-friedrich-gauss-prize/carl-friedrich-gauss-prize-2026">awarded this year to Yurii Nesterov</a> for his work on mathematical optimisation, which has paved the way for the AI revolution. We will come back to this later, but let's think about optimisation first. Optimisation is familiar to all STEM students through curve fitting, but not many chemistry students want to get into the maths underpinning the methods in my experience. This is a bit of a shame, because it's cool, and in a more practical sense it's important for understanding the limitations of some of these methods. For instance, more than once I've read reports where people quote fitted rate constants like:
+</p>
+<div class="math">$$
+k = 0.5 ~\text{s}^{-1} \pm 10 ~\text{s}^{-1}
+$$</div>
+<p>
+Which belies both a basic lack of proof reading on the part of the student, but also an admirable level of trust placed in the results of the optimisation algorithm used to extract the parameter<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. All of this leads me to believe that more education about these methods is necessary, especially when ChatGPT can probably vibe code you a questionably functional, but pretty looking, analysis program for whatever your problem is in less than the time it takes you to get your third americano of the morning. Nesterov at least seems to agree with me, saying in his <a href="https://link.springer.com/book/10.1007/978-3-319-91578-4"><em>Lectures on Convex Optimisation</em></a>:</p>
+<blockquote>
+<p><em>At first glance, everything looks very simple: many commercial optimisation packages are easily available and any user can get a "solution" to the model just by clicking at an icon on the desktop of a person computer. However, the question is, what do we actually get? How much can we trust the answer?</em></p>
+</blockquote>
+<p>So let's talk about these algorithms, and especially <em>gradient descent</em> algorithms which are of what Nesterov won the Gauss Prize for, and have an important application in machine learning we will talk about later.</p>
+<p>The idea of <a href="https://en.wikipedia.org/wiki/Gradient_descent">gradient descent</a> is intuitive and fairly obvious if you think about the problem of finding the minimum point of some surface. If you're standing in Cairngorms (or another mountain range of your choice), and want to get to the bottom of the valley as fast as possible<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> then the obvious thing to do is take a steps downhill, in the opposite direction to the gradient of the hill you're on. There are then a lot of <a href="https://en.wikipedia.org/wiki/Gradient_descent#Choosing_the_step_size_and_descent_direction">subtleties</a> about exactly how large a step you should take, and in what direction, but that's the fundamental idea. </p>
+<p>We can write it down as follows. If we are standing at a point <span class="math">\(x_n\)</span> on our surface <span class="math">\(f(x)\)</span>, then the gradient of the surface at that point is <span class="math">\(\nabla f(x_n)\)</span>. As we want to go downhill<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>, We want to take a step of size <span class="math">\(\eta\)</span> in the the opposite direction to the gradient, so we should step to the new point <span class="math">\(x_{n+1}\)</span> given by:
+</p>
+<div class="math">$$
+x_{n+1} = x_n - \eta \nabla f(x_n)
+$$</div>
+<p>
+Or in words:
+</p>
+<div class="math">$$
+\small{
+\text{New Position}~=~\text{Old Position}~-~\text{Step Size}\times\text{Steepness}}
+$$</div>
+<p>
+Bigger steps, or steeper gradients, mean that the difference in position as we step is larger. Presuming that we can evaluate (or approximate) the gradient of our function <span class="math">\(\nabla f\)</span> , then we can take as many steps as we need for us to end up in a minimum point (at which point repeated steps will just lead to us wandering back and forth around the minimum). That's basically the algorithm. Where we end up might not be the <em>global</em> minimum, but we can <a href="https://en.wikipedia.org/wiki/Procrastination">worry about that later</a>. The main issue is how to avoid this taking a very long time, so that we take as few steps as possible. </p>
+<p>One of the problems in the basic gradient descent is that the algorithm is <a href="https://en.wikipedia.org/wiki/Greedy_algorithm"><em>greedy</em></a>. It doesn't use anything other than the gradient at the current the point to evaluate where to go next, so it throws away all the information in the previous steps. In our hill-walking analogy, this would be like not attempting to look ahead at the best route forward, and stopping to sit down after every step rather than using the momentum you have built up from where you're coming from. Perhaps it's foggy, so we can't look ahead, but we shouldn't be taking a rest break every step. It would be better to incorporate the existing <em>momentum from the previous step</em> in our next step. We can do this by incorporating some fraction <span class="math">\(\beta\)</span> of our previous step <span class="math">\(x_n - x_{n-1}\)</span> into our new step:
+</p>
+<div class="math">$$
+x_{n+1} = x_n + \beta(x_n-x_{n-1}) - \eta \nabla f(x_n)
+$$</div>
+<p>
+It's a bit neater to roll the momentum term into a new variable: <span class="math">\(p_n = \beta(x_n - x_{n-1})\)</span> , so we get:
+</p>
+<div class="math">$$
+x_{n+1} = x_n + p_n - \eta \nabla f(x_n)
+$$</div>
+<p>Or in words:</p>
+<div style="font-size: 0.85em">
+
+$$
+\begin{aligned}
+\text{New Position} &= \text{Old Position} + \text{Momentum From Previous Step} \\\\
+ &- \text{Step Size} \times \text{Steepness At Original Point}
+\end{aligned}
+$$
+
+</div>
+
+<p>We can think of this as first taking a step using our existing momentum from the previous step (<span class="math">\(p_n\)</span>), and then taking a step opposite to the gradient at our original position (<span class="math">\(-\eta\nabla f(x_n)\)</span>). This will obviously help us get to the bottom faster, if the hill is smooth and the direction of our previous step is similar to the direction we want to go anyway in the current step (we basically just move further for free). However, if our landscape isn't smooth, this might be a bit cumbersome because the momentum might take us in the wrong direction - but for these problems, there are <a href="https://en.wikipedia.org/wiki/Global_optimization">other algorithms</a>. This method is sometimes called the <a href="https://doi.org/10.1016/0041-5553(64)90137-5"><em>heavy ball</em> method</a>, as a heavy ball would carry momentum as it rolls down a hill.</p>
+<p>To bring things back to Yurii Nesterov, the <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=DJ8Ep8YAAAAJ&amp;citation_for_view=DJ8Ep8YAAAAJ:hkOj_22Ku90C"><em>Nesterov Accelerated Gradient</em></a> method makes a modification to the method above, where we evaluate the gradient at the new position <em>after</em> we have taken the momentum step:
+</p>
+<div class="math">$$
+x_{n+1} = x_n + \beta(x_n-x_{n-1}) - \eta \nabla f(x_n + \beta(x_n - x_{n-1}))
+$$</div>
+<p>
+Or more concisely, using our substitution for <span class="math">\(p_n\)</span>:
+</p>
+<div class="math">$$
+x_{n+1} = x_n + p_n - \eta \nabla f(x_n + p_n)
+$$</div>
+<p>
+Or:</p>
+<div style="font-size: 0.85em">
+
+$$
+\begin{aligned}
+\text{New Position} &= \text{Old Position} + \text{Momentum From Previous Step} \\\\
+ &- \text{Step Size} \times \text{Steepness After Momentum Step}
+\end{aligned}
+$$
+
+</div>
+<p>Where it's clear that now we evaluate the gradient <em>after</em> the momentum step, which seems reasonable (or at least, not silly). You can think of this as us guessing that the momentum is taking us in the right direction, and computing the gradient there for our next step, which intuitively seems like it would be faster. In addition to this, Nesterov showed that the optimal value of <span class="math">\(\beta\)</span> is given by:
+</p>
+<div class="math">$$
+\beta = \frac{n}{n+3}
+$$</div>
+<p>
+Where <span class="math">\(n\)</span> is the current step. This value of <span class="math">\(\beta\)</span> guarantees under some conditions that the accelerated descent algorithm will converge faster than the others we've described, but the intuition for why this is a faster method is quite subtle and lots of literature has discussed how to interpret this physically (a lot of which is beyond the comprehension of an armchair mathematician). See <a href="https://yuxinchen2020.github.io/ele522_optimization/lectures/accelerated_gradient.pdf">the</a> <a href="https://pages.cs.wisc.edu/~yudongchen/cs726_sp23/Lecture_9_10_accelerated_GD.pdf">notes</a> <a href="https://www.mit.edu/~gfarina/2024/67220s24_L08_accelerated_gd/L08.pdf">linked</a> <a href="https://jlmelville.github.io/mize/articles/nesterov.html">here</a> for some readable discussion, but what's more interesting for us is to play with these methods and see how they look in practice. So below is an interactive plot I've made to demonstrate things, which implements these methods in <a href="../scripts/gradient_descent.ts">simple TypeScript</a>.<br>
+<br></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    #controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+      margin-bottom: 12px;
+    }
+
+    #sliders {
+      display: grid;
+      grid-template-columns: 140px 1fr 64px auto;
+      align-items: center;
+      gap: 6px 10px;
+    }
+
+    .adaptive-label {
+      font-size: 0.85em;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    #sliders input[type="range"] { width: 100%; }
+
+    #inputs-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+    }
+
+    .start-input {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .start-input label { font-size: 0.85em; }
+
+    .start-input input[type="number"] {
+      width: 72px;
+    }
+
+    #inputs-row select {
+      flex: 1;
+      align-self: flex-end;
+    }
+
+    .showline-wrap {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      padding-bottom: 2px;
+    }
+
+    #armijocb:disabled + label { opacity: 0.4; cursor: not-allowed; }
+
+    #buttons-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .btn-group button { width: 100%; }
+
+    .steps {
+      font-size: 0.8em;
+      color: #666;
+      min-height: 1.1em;
+      text-align: center;
+    }
+
+    #util-buttons { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+
+<div id="controls">
+
+  <div id="sliders">
+  <label title="Step size taken by descent method. Initial step size for adaptive methods." for="etaslider">\(\eta\) (step size)</label>
+  <input title="Slide to change the step size (or initial step size for adaptive methods)." type="range" id="etaslider" min="-5" max="-0.7" step="0.1" value="-1.3">
+  <span id="etasliderValue"> </span>
+  <label class="adaptive-label"><input title="Turn on adaptive step size using Adagrad method." type="checkbox" id="adaptivecb"> adaptive</label>
+
+  <label title="Coefficient of the momentum term in the descent algorithm. Higher increases momentum so may speed up convergence, but risks overshooting." for="betaslider">\(\beta\) (momentum)</label>
+  <input title="Slide to change the amount of momentum in the momentum and accelerated momentum methods."
+  type="range" id="betaslider" min="0" max="0.99" step="0.01" value="0">
+  <span id="betasliderValue"> </span>
+  <label class="adaptive-label"><input title="Use Nesterov optimised beta value, beta = n/n+3." type="checkbox" id="nesterovbetacb"> nesterov</label>
+
+  <label title="The difference between two adjacent steps must be less than epsilon convergence. Increase to speed up." for="tolslider">\(\epsilon\) (tolerance)</label>
+  <input title="Slide to change the criterion for convergence."
+  type="range" id="tolslider" min="-9" max="-2" step="1" value="-6">
+  <span id="tolsliderValue"> </span>
+  <span></span>
+  </div>
+
+  <div id="inputs-row">
+    <div class="start-input">
+      <label for="x0input">Start \(x_0\)</label>
+      <input title = "Initial value of x0." type="number" id="x0input" value="-1" step="0.1">
+    </div>
+    <div class="start-input">
+      <label for="y0input">Start \(y_0\) <small>(2D)</small></label>
+      <input title="Initial value of y0." type="number" id="y0input" value="1.5" step="0.1">
+    </div>
+    <select title="Select the desired objective function." id="funcselect">
+      <option value="quad">Quadratic</option>
+      <option value="quar" selected>Quartic</option>
+      <option value="ros">Rosenbrock</option>
+    </select>
+    <div class="showline-wrap">
+      <input title="Show lines connecting adjacent steps." type="checkbox" id="showline">
+      <label for="showline">Show path</label>
+    </div>
+    <div class="showline-wrap">
+      <input title="Implement a backtracking line search after each step, that prevents any step going uphill (forces the step to cause a nonzero decrease in the function)." type="checkbox" id="backtrackcb">
+      <label for="backtrackcb">Backtrack</label>
+    </div>
+    <div class="showline-wrap">
+      <input title="Implement the Armijo condition on the backtracking, that forces a minimum decrease in the function for each step (rather than simply a nonzero decrease)." type="checkbox" id="armijocb" disabled>
+      <label for="armijocb">Armijo</label>
+    </div>
+  </div>
+
+  <div id="buttons-row">
+    <div class="btn-group">
+      <button title="Run a basic gradient descent." type="button" id="runbutton">Basic Gradient Descent</button>
+      <span class="steps" id="gdsteps"></span>
+    </div>
+    <div class="btn-group">
+      <button title="Run gradient descent with momentum from previous step." type="button" id="runmomentumbutton">Momentum Descent</button>
+      <span class="steps" id="momentumsteps"></span>
+    </div>
+    <div class="btn-group">
+      <button title="Run gradient descent with accelerated momentum, where gradient is evaluated after the momentum step." type="button" id="runacceleratedbutton">Accelerated Momentum Descent</button>
+      <span class="steps" id="acceleratedsteps"></span>
+    </div>
+  </div>
+
+</div>
+
+<div id="util-buttons">
+  <button title="Clear any plotted traces." type="button" id="clearbutton">Clear</button>
+  <button title="Reset axis zoom to defaults." type="button" id="resetbutton">Reset Zoom</button>
+</div>
+
+<div id="chart"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2/plotly.min.js"></script>
+<script type="module" src="../scripts/gradient_descent.js"></script>
+
+</body>
+</html>
+<p><br>
+You can play with finding the minima in the following functions:
+</p>
+<div class="math">$$
+\begin{aligned}
+f(x) &amp;= x^2 \\\\
+f(x) &amp;= x^4 + 0.5x^3 - 2x^2 \\\\
+f(x,y) &amp;= (1-x)^2 + 100(y-x^2)^2 
+\end{aligned}
+$$</div>
+<p>
+In order: a simple quadratic, a more complex quartic, and the <a href="https://en.wikipedia.org/wiki/Rosenbrock_function"><em>Rosenbrock Function</em></a> that is commonly used for testing optimisation algorithms (the global minimum in the Rosenbrock function used is at the point (1,1)). The methods available are the ones described above - tweak the parameters and see how they perform. Mouseover text on all the options explains a bit more about things, so you can play start points, convergence criteria, adaptive step sizes, and some constraints on steps like using a <a href="https://en.wikipedia.org/wiki/Backtracking_line_search">backtracking line search</a> to prevent any step going uphill, and imposing the <a href="https://projecteuclid.org/journals/pacific-journal-of-mathematics/volume-16/issue-1/Minimization-of-functions-having-Lipschitz-continuous-first-partial-derivatives/pjm/1102995080.full"><em>Armijo condition</em></a> on the backtracking search to ensure any step makes a minimum amount of descent. Exploring the options will show you that there's no universal parameter set that will work for all problems - which is <strong>the</strong> thing I think it is useful to take away from this. Nesterov states in the aforementioned book:</p>
+<blockquote>
+<p><em>The main fact, which should be known to any person dealing with optimisation models, is that in general,</em> <strong>optimisation problems are unsolvable.</strong> </p>
+</blockquote>
+<p>It's interesting then, to think about where these kinds of algorithms are used. One case common in academic STEM is modelling data to extract parameters - but anyone who has spoken to me will know that this is a topic I can be very boring about, so let's think about another: <strong>machine learning.</strong> </p>
+<p><em>Machine learning</em> is the process by which computers learn from data and do things with it, like <a href="https://github.com/lightvector/KataGo">play Go</a> at a superhuman level, <a href="https://doi.org/10.1016/j.csbj.2024.02.004">find trends</a> in noisy data, or generate slightly creepy <a href="https://www.youtube.com/watch?v=3xVruWQQt7U&amp;list=PL5BnCN_mKvFKorUnG5feN5YPMlBH88X_W&amp;index=1">videos of virtual cats</a>. Optimisation is an integral part of all of this, but a concrete place to see gradient descent is in the way that a <a href="https://en.wikipedia.org/wiki/Neural_network">neural network</a> works. Essentially these are models that take in a large (like, very large) number of parameters, and find the optimum value of them for a specific problem. Gradient descent is a common way that these parameters are optimised, and if you're familiar with neural networks but not gradient descent algorithms, then the step size (<span class="math">\(\eta\)</span> ) we talked about is commonly called the <a href="https://en.wikipedia.org/wiki/Learning_rate">learning rate</a> in the context of neural networks. Large Language Models (LLMs) like ChatGPT, Claude, and Gemini are all fundamentally neural networks optimised using gradient descent or variants of it. So, we can see that this mathematics is underpinning the AI revolution, and while the overall profitability of this 'revolution' remains <a href="https://isaiprofitable.com/">disputed</a>, it's difficult to argue that it's not bringing in a lot of investment and making a lot of money for private companies<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>. The obvious question is then: <strong>where has the knowledge that enables this technology has come from?</strong> </p>
+<p>The answer is from people like Yurii Nesterov. People who work in publicly funded institutions, on research grants funded by governments and charities, which are ultimately funded by the taxpayer. There has been considerable <a href="https://regulatingai.org/uk-artists-rally-against-ai-copyright-loopholes/">debate</a> about the ethics of AI companies training LLMs on the entire back catalogue of human creativity, only to sell the result back to us; yet there seems to have been comparatively little debate about the ethics of companies, who develop technology built on public knowledge that only exists due to <a href="https://attract-eu.com/wp-content/uploads/2024/02/The-past-and-future-of-the-EUs-%E2%80%98Horizon-Framework-Programme.pdf">enormous sustained public investment in knowledge creation</a>, <a href="https://www.ft.com/content/d8a5f95e-3b6d-463a-a848-c9ef8e2394db?syn-25a6b1a6=1">lobbying hard</a> to <a href="https://www.theailobby.com/analysis/ai-lobbying-playbook-tech-companies">avoid regulation</a> and <a href="https://www.forbes.com/sites/phoebeliu/2026/02/20/ais-biggest-builders-openai-anthropic-among-biggest-government-lobbyists/">disempower the nation states</a> which ultimately facilitate all of their activities. I'm not anti-AI, and I use it a lot for helping to write programs - which it is really good at, and has saved me a lot of time in the last few months - but doesn't it seem obvious that none of this exists in a vacuum, and that it is built on the shoulders of all of human knowledge and creativity, which is owned (and has been paid for) by all of us?</p>
+<p>Maybe, then, it is time for us to collectively say that all this lobbying, which essentially seems to follow the standard playbook of complaining about the how the governments of the nation states that provide the infrastructure and knowledge for you to exist also want you to pay a bit back, is a bit silly. It is not very difficult to envisage some <a href="http://arxiv.org/pdf/2507.09369">fairly dark outcomes</a> from the <a href="https://www.forbes.com/sites/amirhusain/2025/05/20/the-rise-of-the-ai-nation/">path we are on</a>. Perhaps it is time for someone to say that the algorithm has converged, or at the very least, impose some hard bounds, or arrest the learning rate, before the descent takes us into a well that no amount of momentum would get us out of.
+<br>
+<br></p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The parameter estimate itself probably isn't <em>wrong</em>, but obviously the error is - these errors tend to be estimated by taking numerical approximations of the curvature of the goodness-of-fit function with respect to the parameter, and for lots of problems (especially involving exponential decays) these numerical estimates blow up, giving you errors of thousands of percent of the original value, <em>and</em> to be fair to the writers of those libraries, they do warn you about all of this, but who has time to read all the documentation?&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>And you don't mind breaking a leg or ankle.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>This is just convention. There is nothing sacred about minimisation, and we could just as easily construct all optimisation problems to be problems of maximisation, so <em>ascent</em> rather than <em>descent</em>. Descent feels a bit more natural, and a bit less like hard work, and the reason we've collectively opted for that convention probably reveals something about the human psyche.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Rory Stewart breathlessly reminds us every week on the Rest is Politics: <em>'we need to build data centers, or we'll fall behind!'</em>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="../feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>
