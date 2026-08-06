@@ -98,17 +98,13 @@ function backtrack(base: number[] | number, grad: number[] | number,
 
         const f_try = f(x_try) as number; // objective value at the trial point
 
-        // Acceptance check:
-        //   Simple:  f_try < f_cur                          (any decrease is fine)
-        //   Armijo:  f_try ≤ f_cur − c·s·‖grad‖²           (decrease must be lower)
-        //
-        // The Armijo RHS gets smaller as s shrinks, so the condition eventually becomes
-        // identical to the simple one — guaranteeing termination.
+
+        // check if the descent is big enough
         const ok = doArmijo ? f_try <= f_cur - c * s * normSq : f_try < f_cur;
-        if (ok) return s; // first s that passes → return it
+        if (ok) return s; // return if passes
         s *= 0.5;         // otherwise halve and try again
     }
-    return s; // fallback: return whatever tiny s remains after 50 halvings
+    return s; // fallback: return whatever tiny s remains after 50 halves
 }
 
 function gradient_descent(x: number[] | number, f: Function, df: Function, eta: number | 'adaptive', _beta: number, convtol: number, init_eta: number = 0.01, doBacktrack: boolean = false, doArmijo: boolean = false): [(number | number[]), (number | number[]), number, number][] {
