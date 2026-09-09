@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>James D Pickering | Igbo Verb Conjugator</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link href="http://jamesdpickering.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
+    <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="jdpicks" />
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1M07TKD861"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1M07TKD861');
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/pages/teaching.html">Teaching</a></li>
+                <li><a href="/pages/research.html">Research</a></li>
+                <li><a href="/pages/programs.html">Programs</a></li>
+                <li><a href="/pages/calculators.html">Calculators</a></li>
+                <li><a href="/pages/plots.html">Plots</a></li>
+                <li><a href="/pages/misc.html">Misc</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="../">James D Pickering</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <div class="page">
+                <h1>Igbo Verb Conjugator</h1>
+                <p>Anyone who has tried to learn the <a href="https://en.wikipedia.org/wiki/Igbo_language">Igbo language</a> from an European language like English, will probably be aware that at first sight, the verb conjugation system seems bonkers. Lots of the verbs are transitive (including many that aren't transitive in English, like <em>'to eat'</em>, which in Igbo must be followed by an object like <em>'food'</em>, as <em>iri nri</em>), and there are very few adjectives (only eight, <a href="https://www.google.com/books/edition/A_Grammar_of_Contemporary_Igbo/5p7ICwAAQBAJ?hl=en&amp;gbpv=1&amp;dq=a+grammar+of+contemporary+igbo&amp;printsec=frontcover">according to Emenanjo</a>), meaning that verbs do a lot of the heavy lifting in the language. In addition, the languages are tonal and contain a lot of sounds that seem unnatural to the ears of a native English speaker, and there are not that many useful resources for someone looking to learn it (with the exception of <a href="https://nkowaokwu.com/">a</a> <a href="https://igbo.mofeko.com/index.html">few</a> <a href="https://ezinaulo.com/">excellent</a> <a href="https://www.igbostudy.com/blog/">websites</a>).</p>
+<p>The general verb conjugation rules are reasonably simple (once you've written a typescript program to apply them to any word, at any rate), and entering a verb of a given tense in any of the cells below will make the other conjugations. </p>
+<p>There are exceptions to the rules - usually in common verbs, a feature shared with English. Generally <em>vowel harmony</em> needs to be followed where words are either in the 'light' group (a,ị,ọ,ụ) or 'heavy' group (e,i,o,u). The table below attempts to infer the vowel harmony from your entry, but in some cases (such as with the verb <em>iri</em> - <em>to eat</em>) the rules break down.</p>
+<table>
+<form class="wrapper">
+
+<tr>
+<td title='To come.'> <label for="infinitive">Infinitive:</label> </td>
+<td> <input type="text" placeholder='ịbịa' id="infinitive" name="infinitive" size=12> </td>
+<td title='Vowel group (heavy or light) for vowel harmony.'> <label for="vowelgroupbox">Vowel Group:</label> </td>
+<td> <input type="text" placeholder='Light (a,ị,ọ,ụ)' disabled='disabled' id="vowelgroupbox" name="vowelgroupbox" size=12> </td>
+</tr>
+
+<tr>
+<td title='He came.'> <label for="past">Past:</label> </td>
+<td> <input type="text" placeholder='bịara' id="past" name="past" size=12> </td>
+<td title='He did not come.'> <label for="negpast">Negative Past:</label> </td>
+<td> <input type="text" placeholder='bịaghị' id="negpast" name="negpast" size=12> </td>
+</tr>
+
+<tr>
+<td title='He has come.'> <label for='perfect'>Perfect:</label> </td>
+<td> <input type="text" placeholder='bịaala' id='perfect' name='perfect' size=12> </td>
+<td title='He has not come.'> <label for='negperfect'>Negative Perfect:</label> </td>
+<td> <input type="text" placeholder='bịabeghị' id='negperfect' name='negperfect' size=12> </td>
+</tr>
+
+<tr>
+<td title='He comes.'> <label for='present'>Present:</label> </td>
+<td> <input type="text" placeholder='bịa' id='present' name='present' size=12> </td>
+<td title='He does not come..'> <label for='negpresent'>Negative Present:</label> </td>
+<td> <input type="text" placeholder='bịaghị' id='negpresent' name='negpresent' size=12> </td>
+</tr>
+
+<tr>
+<td title='He is coming.'> <label for='presentcont'>Continuous:</label> </td>
+<td> <input type="text" placeholder='na-abịa' id='presentcont' name='presentcont' size=12> </td>
+<td title='He is not coming.'> <label for='negpresentcont'>Negative Continuous:</label> </td>
+<td> <input type="text" placeholder='naghị abịa' id='negpresentcont' name='negpresentcont' size=12> </td>
+
+<tr>
+<td title='He will come.'> <label for='future'>Future:</label> </td>
+<td> <input type="text" placeholder='ga-abịa' id='future' name='future' size=12> </td>
+<td title='He will not come.'> <label for='negfuture'>Negative Future:</label> </td>
+<td> <input type="text" placeholder='gaghị abịa' id='negfuture' name='negfuture' size=12> </td>
+</tr>
+
+<tr>
+<td title='Come!'> <label for='imperative'>Imperative:</label> </td>
+<td> <input type="text" placeholder='bịaa' id='imperative' name='imperative' size=12> </td>
+<td title='Do not come!'> <label for='negimperative'>Negative Imperative:</label> </td>
+<td> <input type="text" placeholder='abịaala'id='negimperative' name='negimperative' size=12> </td>
+</tr>
+
+</form>
+</table>
+<p><br></p>
+<p><em>Note, the table below is not clever enough to figure out if the verb you've entered is actually a real verb, it just adds the right prefix/suffix to the root. I'm also not anywhere near a fluent speaker, and there are about a million dialectical differences depending on where you're from... but hopefully it is mostly correct.</em></p>
+<script type='text/javascript' src='../scripts/conjugator_script.js' defer></script>
+            </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="../feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>
