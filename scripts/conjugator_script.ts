@@ -135,9 +135,9 @@ function update_form(event: Event): void {
   const root = changed_box.toRoot(String(changed_box.value));
   const vowelgroup = getVowelGroup(root);
   if (vowelgroup) {
-    vowelgroupbox.value = "Heavy (e,i,o,u)";
+    vowelgroupbox.value = "Heavy (e i o u)";
   } else {
-    vowelgroupbox.value = "Light (a,ị,ọ,ụ)";
+    vowelgroupbox.value = "Light (a ị ọ ụ)";
   }
 
   // run through all the other boxes and update them using the fromJoule functions
