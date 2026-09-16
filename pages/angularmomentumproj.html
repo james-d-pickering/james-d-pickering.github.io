@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>James D Pickering | Orientations of Quantised Angular Momentum</title>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link href="http://jamesdpickering.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="James D Pickering Full Atom Feed" />
+    <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/pygments.css" type="text/css" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="jdpicks" />
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1M07TKD861"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1M07TKD861');
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/pages/teaching.html">Teaching</a></li>
+                <li><a href="/pages/research.html">Research</a></li>
+                <li><a href="/pages/programs.html">Programs</a></li>
+                <li><a href="/pages/calculators.html">Unit Converter</a></li>
+                <li><a href="/pages/plots.html">Plots</a></li>
+                <li><a href="/pages/misc.html">Misc</a></li>
+                <li><a href="/pages/about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="../">James D Pickering</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <div class="page">
+                <h1>Orientations of Quantised Angular Momentum</h1>
+                <p><em>This method is a little more hand-wavy than some and doesn't really lead to a robust answer to the question for spin angular momentum specifically - but it is reasonable enough to get a feel for the ideas.</em></p>
+<p>We want to understand why there are <span class="math">\(2L+1\)</span> different orientations (projections) of the quantised angular momentum <span class="math">\(L\)</span>. </p>
+<p>Consider a particle moving on the surface of a sphere. The quantum mechanics of this system are well documented in any textbook (e.g Atkins), and the solutions are the <a href="https://en.wikipedia.org/wiki/Spherical_harmonics">spherical harmonics</a>. The energy of the particle is given by:
+</p>
+<div class="math">$$
+E = \frac{l(l+1)\hbar^2}{2I}
+$$</div>
+<p>
+Where <span class="math">\(l\)</span> is the <em>angular momentum quantum number</em> and <span class="math">\(I\)</span> is the moment of inertia of the particle. Classically, if we consider the same system, the energy of the particle is given by:
+</p>
+<div class="math">$$
+E = \frac{L^2}{2I}
+$$</div>
+<p>
+Where <span class="math">\(L\)</span> is the angular momentum of the particle. Comparison of the two equations leads to the identification of the angular momentum, <span class="math">\(L\)</span>, as:
+</p>
+<div class="math">$$
+L = \sqrt{l(l+1)}\hbar ~( = \vert \vec{L} \vert)
+$$</div>
+<p>
+Physically, we can interpret this as the length of the angular momentum vector, <span class="math">\(\vert\vec{L}\vert\)</span>, of the particle. This angular momentum vector could represent any angular momentum, though we have explicitly compared to the classical angular momentum <span class="math">\(L\)</span> (so we won't see the half-integer angular momentum fall beautifully out of the equations). </p>
+<p>We can represent this angular momentum in Cartesian coordinates, with components along each coordinate axis:
+</p>
+<div class="math">$$
+\vec{L} = L_x \,\vec{i} + L_y\,\vec{j} + L_z\,\vec{k}
+$$</div>
+<p>
+If you consider the observation of the angular momentum of a particle, you find that you can simultaneously observe only the square of the total angular momentum <span class="math">\(L^2\)</span> and one of the components. By convention, this component is the z-component, <span class="math">\(L_z\)</span>. By analogy with the simpler system, the particle on a ring, you can identify <span class="math">\(L_z\)</span> as:
+</p>
+<div class="math">$$
+L_z = m \hbar, ~\text{where}~ m = 0, \pm 1, \pm 2, ...
+$$</div>
+<p>
+This <em>looks</em> like we are getting somewhere familiar: we know that we expect <span class="math">\(m = -1, 0, 1\)</span> for <span class="math">\(l=1\)</span> (e.g. the three p-orbitals). But we have not seen a reason to limit the value of <span class="math">\(m\)</span>, yet.</p>
+<p>Consider now a vector <span class="math">\(\vec{L}\)</span> and it's z-component, <span class="math">\(L_z\)</span>. Clearly, the z-component cannot be longer than the original vector. So we have:
+</p>
+<div class="math">$$
+L_z \leq \vert \vec{L} \vert
+$$</div>
+<p>
+We know from earlier that we have expressions for both <span class="math">\(\vert \vec{L} \vert\)</span> and <span class="math">\(L_z\)</span>, so:
+</p>
+<div class="math">$$
+m\hbar \leq \sqrt{l(l+1)}\hbar 
+$$</div>
+<p>
+Dividing by <span class="math">\(\hbar\)</span> and squaring:
+</p>
+<div class="math">$$
+m^2 \leq l(l+1) 
+$$</div>
+<p>
+We know that <span class="math">\(m = 0, \pm 1, \pm 2, ...\)</span> and that <span class="math">\(l = 0, 1, 2, ...\)</span> </p>
+<p>The inequality above is what brings the restriction on <span class="math">\(m\)</span>. For example, in the case that <span class="math">\(l=1\)</span>:
+</p>
+<div class="math">$$
+\begin{align}
+l(l+1) &amp;= 2 \\
+m^2 &amp;\leq 2 \\
+m &amp;\leq \pm \sqrt{2} ~(\pm 1.414)
+\end{align}
+$$</div>
+<p>
+Thus we can see that the only values of <span class="math">\(m\)</span> that satisfy <span class="math">\(m^2 \leq l(l+1)\)</span> for <span class="math">\(l=1\)</span> are <span class="math">\(m = -1, 0\)</span> and 1, i.e <strong>three</strong> values of <span class="math">\(m\)</span>. </p>
+<p><strong>This is the basis of the rule that there are <span class="math">\(2l+1\)</span> different values of <span class="math">\(m\)</span> for a given integer <span class="math">\(l\)</span>.</strong> </p>
+<p>We can also go a bit further and show that for a given integer value of <span class="math">\(l\)</span>, the largest integer <span class="math">\(m\)</span> that satisfies <span class="math">\(m^2 \leq l(l+1)\)</span> is always <span class="math">\(\vert m \vert = l\)</span>. One way to do this is a satisfying proof by contradiction. Suppose that the largest integer <span class="math">\(m\)</span> that satisifes <span class="math">\(m^2 \leq l(l+1)\)</span> is actually <span class="math">\(\vert m \vert = l+1\)</span> (i.e. the next integer along to what we expect). Then we have:
+</p>
+<div class="math">$$
+\begin{align}
+(l+1)^2 &amp;\leq l(l+1) \\
+l^2 + 2l + 1 &amp;\leq l^2 + l \\
+l + 1 &amp;\leq l
+\end{align}
+$$</div>
+<p>
+The last line cannot possibly be true for any integer <span class="math">\(l = 0, 1, 2, ...\)</span>. So <span class="math">\(\vert m \vert = l+1\)</span> was obviously too big.</p>
+<p>Now we try taking the next integer down, i.e. <span class="math">\(\vert m \vert = l\)</span>, and running the same argument:
+</p>
+<div class="math">$$
+\begin{aligned}
+l^2 &amp;\leq l(l+1) \\
+l^2 &amp;\leq l^2 + l \\
+0 &amp;\leq l
+\end{aligned}
+$$</div>
+<p>
+This is now obviously true for any value of <span class="math">\(l = 0, 1, 2, ...\)</span>. </p>
+<p>So the largest integer <span class="math">\(m\)</span> that satisfies <span class="math">\(m^2 \leq l(l+1)\)</span> is <span class="math">\(\vert m \vert = l\)</span>.</p>
+<p>Thus we conclude that the values of <span class="math">\(m\)</span> (the z-component of our quantised angular momentum) that are possible for a given value of <span class="math">\(l\)</span> are:
+</p>
+<div class="math">$$
+m = 0, \pm 1, \pm 2, ... \pm l
+$$</div>
+<p>
+Which leads directly to the rule that a given angular momentum <span class="math">\(L\)</span> has <span class="math">\(2L+1\)</span> projections. You can think of the it as:</p>
+<ul>
+<li>Each set of positive and negative integers gives the <span class="math">\(2L\)</span>.</li>
+<li>The zero gives the additional projection, which is the <span class="math">\(+1\)</span></li>
+<li>Overall it is <span class="math">\(2L+1\)</span>.</li>
+</ul>
+<p>A more general way to show this, which also suggests/predicts the existence of half-integer angular momentum, is a bit more involved and uses a lot of angular momentum algebra and ladder operators...</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="../feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>
